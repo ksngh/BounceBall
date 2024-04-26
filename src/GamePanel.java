@@ -50,6 +50,9 @@ public class GamePanel extends JPanel implements Runnable {
                     setRight(false);
                 }
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    ball.setX(150);
+                    ball.setY(550);
+                    Thread thread;
                     thread = new Thread(GamePanel.this);
                     thread.start();
                 }
@@ -110,8 +113,6 @@ public class GamePanel extends JPanel implements Runnable {
         ball.setY(tempY + ball.getSpeedY());
         if (ball.getY()>1000){
             thread.interrupt();
-            thread = new Thread(GamePanel.this);
-            thread.start();
         }
     }
 
@@ -164,7 +165,7 @@ public class GamePanel extends JPanel implements Runnable {
             repaint();
             finish();
             try {
-                Thread.sleep(18);
+                Thread.sleep(15);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
